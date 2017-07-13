@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+	<script src="angular.js"></script>
+  </head>
+
+  <body ng-app="">
+    <h2>Conference #129878</h2>
+    <div ng-controller="repeatTest">
+	<table class="main">
+		<tr>	
+		  <td style="width: 30%; vertical-align: top;">
+			<table class="participants">
+				<thead><td>Participants</td></thead>
+				<tr ng-repeat="nameObject in names">
+					<td ng-click="toogleSelection(nameObject.name)">{{nameObject.name}}</td>
+				</tr>
+			</table>
+		  </td>
+		  <td>
+			<table class="main sessions">
+				<thead>
+				  <tr>
+					<td style="width: 30px;"></td>
+					<td>Username</td>
+					<td>Join time</td>
+					<td>Leave time</td>
+					<td>Duration</td>
+				  </tr>  
+				</thead>
+				<tbody>
+				  <tr ng-class="person.selected ? 'selected' : ''" ng-repeat-start="person in people">
+					<td>
+					  <button ng-if="person.expanded" ng-click="person.expanded = false" style="width: 30px;">-</button>
+					  <button ng-if="!person.expanded" ng-click="person.expanded = true" style="width: 30px;">+</button>
+					</td>
+					<td>{{person.name}}</td>
+					<td>{{person.joinTime}}</td>
+					<td>{{person.leaveTime}}</td>
+					<td>{{person.duration}}</td>
+				  </tr>
+				  <tr ng-if="person.expanded" ng-repeat-end="">
+					<td colspan="5">
+						<table class="main">
+							<thead><td colspan="8"><b>Summary</b></td></thead>
+							<thead><td colspan="6"></td><td>Sessions</td><td>Avg. Mos</td></thead>
+							<tr>
+								<td rowspan="3">Call from</td>
+								<td>Device:</td>
+								<td>{{person.device}}</td>
+								<td rowspan="3">Call to</td>
+								<td>Front End Server:</td>
+								<td>{{person.server.id}}</td>
+								<td>{{person.server.sessions}}</td>
+								<td>{{person.server.avgMos}}</td>				
+							</tr>
+							<tr>
+								<td>Skype for business:</td>
+								<td>{{person.skype}}</td>
+								<td>Pool:</td>
+								<td>{{person.pool.id}}</td>
+								<td>{{person.pool.sessions}}</td>
+								<td>{{person.pool.avgMos}}</td>				
+							</tr>
+							 <tr>
+								<td>Access Point:</td>
+								<td>{{person.accessPoint}}</td>
+								<td>Site:</td>
+								<td>{{person.site.id}}</td>
+								<td>{{person.site.sessions}}</td>
+								<td>{{person.site.avgMos}}</td>				
+							</tr>
+						</table>
+					</td>
+				  </tr>
+				</tbody>
+			  </table>
+			</td>
+		</tr>
+	</table>
+    </div>
+  </body>
+
+</html>

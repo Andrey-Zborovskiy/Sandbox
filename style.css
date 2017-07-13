@@ -1,0 +1,15 @@
+table.main {
+	width:100%
+}
+
+table.sessions thead {
+	background-color: lightgray;
+}
+
+table.participants thead {
+	background-color: lightgray;
+}
+
+table tr.selected {
+	color: red;
+}
