@@ -14,4 +14,5 @@ function repeatTest($scope) {
   $scope.toogleSelection = function(name) {
 	$scope.people.forEach(function(person) {person.selected = person.name == name;});	
   }
+  $scope.properties = [{name:'name', label:'Username'}, {name:'joinTime', label:'Join time'}, {name:'leaveTime', label:'Leave time'}, {name:'duration', label:'Duration'}];
 }

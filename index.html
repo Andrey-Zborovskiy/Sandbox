@@ -25,10 +25,7 @@
 				<thead>
 				  <tr>
 					<td style="width: 30px;"></td>
-					<td>Username</td>
-					<td>Join time</td>
-					<td>Leave time</td>
-					<td>Duration</td>
+					<td ng-repeat="property in properties">{{property.label}}</td>
 				  </tr>  
 				</thead>
 				<tbody>
@@ -37,10 +34,7 @@
 					  <button ng-if="person.expanded" ng-click="person.expanded = false" style="width: 30px;">-</button>
 					  <button ng-if="!person.expanded" ng-click="person.expanded = true" style="width: 30px;">+</button>
 					</td>
-					<td>{{person.name}}</td>
-					<td>{{person.joinTime}}</td>
-					<td>{{person.leaveTime}}</td>
-					<td>{{person.duration}}</td>
+					<td ng-repeat="property in properties">{{person[property.name]}}</td>
 				  </tr>
 				  <tr ng-if="person.expanded" ng-repeat-end="">
 					<td colspan="5">
